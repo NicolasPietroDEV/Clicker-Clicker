@@ -1,14 +1,26 @@
 body {
-    background-color: rgba(243, 71, 19, 0.473);
+  background-color: rgba(243, 71, 19, 0.473);
 }
-h1 {
-    text-align: center;
+.titulo1 {
+  text-align: center;
 }
 
 .butao {
-    padding: 30px;
-    border-radius: 25px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-};
+  padding: 30px;
+  border-radius: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#din{
+  cursor: pointer;
+  
+}
+#din:hover {
+  width: 310px;
+}
+
+.upgradebutton {
+  padding: 10px;
+  border-radius: 25px;
+}

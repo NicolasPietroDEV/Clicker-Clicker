@@ -8,18 +8,38 @@
     <title>Clicker</title>
   </head>
   <body>
-    <h1>Clicker</h1>
+    <h1 class="titulo1">Clicker</h1>
     <br />
     <p>Dinheiro:</p>
     <p id="dinheiro">0</p>
-    <button onclick="dinheiro()" class="butao">Ganhar dinheiro</button>
+    <h6>DPC: <b id="dpc">1</b></h6>
+    <image  id="din" src="../assets/dinheironaici.jpg" onclick=dinheiro() class="butao" width="300px">
     <hr />
-
     <div id="upgrades">
       <p>
         Aumentar potência
-        <button onclick="moredinheiro()" id="potencia">10</button>
+        <button onclick="moredinheiro(1.2, 2, upgradeclick)" id="potencia" class="upgradebutton">10</button>
       </p>
+      <p>
+        Farmácia <progress></progress><button id="farmacia">7500</button>
+        <h6>DPS: <h6></h6>10</h6>
+      </p>
+      <hr>
+      <p>
+        Açougue <progress></progress><button id="acougue">15000</button>
+        <h6>DPS: <h6></h6>50</h6>
+      </p>
+      <hr>
+      <p>
+        Supermercado <progress></progress><button id="super">30000</button>
+        <h6>DPS: <h6></h6>100</h6>
+      </p>
+      <hr>
+      <p>
+        Shopping <progress></progress><button id="shop">60000</button>
+        <h6>DPS: <h6></h6>300</h6>
+      </p>
+      <hr>
     </div>
     <script src="main.js"></script>
   </body>
