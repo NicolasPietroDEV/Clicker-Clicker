@@ -1,8 +1,9 @@
 body {
-  background-color: rgba(243, 71, 19, 0.473);
+  background-image: linear-gradient(rgb(8, 114, 8), rgb(128, 197, 128));
 }
 .titulo1 {
   text-align: center;
+  font-family: fantasy, cooperplate, serif;
 }
 
 .butao {
@@ -12,14 +13,22 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
 #din {
   cursor: pointer;
 }
-#din:hover {
-  width: 310px;
+
+#din:active {
+  width: 23.5%;
 }
 
-.upgradebutton {
-  padding: 10px;
-  border-radius: 25px;
+#numbers {
+  background-color: rgb(191, 236, 171);
+  width: 100%;
+  le
+}
+
+#upgrades {
+  background-color: rgba(56, 112, 3, 0.473);
+  border-radius: 50;
 }

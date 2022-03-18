@@ -5,85 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Clicker</title>
+    <title>Simulador de Empresário</title>
   </head>
   <body>
 
     <h1 class="titulo1">
-      Clicker
+      Simulador de Empresário
     </h1> 
 
     <br />
 
-    <p>
-      Dinheiro:
-    </p>
 
-    <p id="dinheiro">
-      0
-    </p>
-
-    <h6>
-      DPC: 
-      <b id="dpc">
-        1
-      </b>
-    </h6>
-
-    <h6 id="dpsall">
-      DPS: 
-      <b id="dps">
-        0
-      </b>
-    </h6>
+    <div id="numbers">
+      <p>
+        Dinheiro: R$
+        <b id="dinheiro">
+          0
+        </b>
+      </p>
+      <h6>
+        DPC:
+        <b id="dpc">
+          1
+        </b>
+      </h6>
+      <h6 id="dpsall">
+        DPS:
+        <b id="dps">
+          0
+        </b>
+      </h6>
+    </div>
 
     <image 
     id="din" 
-    src="../assets/dinheironaici.jpg" 
+    src="../assets/Imagem2.png" 
     onclick=dinheiro() 
     class="butao" 
     width="300px">
-
-    <hr />
     
-    <p>
-      Aumentar potência
-      <button onclick="moredinheiro(1.25, 2, upgradeclick, dindinperclick)" id="potencia" class="upgradebutton">
-        10
-      </button>
-    </p>
-    <hr>
-
-    <div id="farmacias">
+    <div id="upgrades">
+      <hr />
       <p>
-        Farmácia <progress></progress><button id="farmacia" onclick=farma()>Liberar</button>
+        Aumentar potência
+        <button onclick="moredinheiro(1.25, 2, upgradeclick, dindinperclick)" id="potencia" class="upgradebutton">
+          10
+        </button>
       </p>
-      <h6>DPS: <h6 id = "farmaciadps">0</h6>
-      <hr>
-    </div>
+      Nv.<b id="clicklevel">0</b>
 
-    <div id="acougues">
-      <p>
-        Açougue <progress></progress><button id="acougue" onclick=acougue()>Liberar</button>
-      </p>
-      <h6>DPS: <h6 id = "acouguedps">0</h6>
       <hr>
-    </div>
+      <div id="farmacias">
+        <img src="../assets/farmacia.jpg" width="10%">
+        <p>
+          Farmácia <progress id="progressfarma"></progress><button id="farmacia" onclick=farma()>Liberar</button>
+        </p>
+        Nv.<b id="farmalevel">0</b>
+        <h6>DPS: <h6 id = "farmaciadps">0</h6>
+        <hr>
+      </div>
 
-    <div id="supermercados">
-      <p>
-        Supermercado <progress></progress><button id="super" onclick=superm()>Liberar</button>
-      </p>
-      <h6>DPS: <h6 id = "superdps">0</h6>
-      <hr>
-    </div>
+      <div id="acougues">
+        <img src="../assets/acougue.jpg" width="10%">
+        <p>
+          Açougue <progress id="progressacougue"></progress><button id="acougue" onclick=acougue()>Liberar</button>
+        </p>
+        Nv.<b id="acouguelevel">0</b>
+        <h6>DPS: <h6 id = "acouguedps">0</h6>
+        <hr>
+      </div>
 
-    <div id="shoppings">
-      <p>
-        Shopping <progress></progress><button id="shop" onclick=shop()>Liberar</button>
-      </p>
-      <h6>DPS: <h6 id = "shopdps">0</h6>
-      <hr>
+      <div id="supermercados">
+        <img src="../assets/supermercado.jpg" width="10%">
+        <p>
+          Supermercado <progress id="progresssuper"></progress><button id="super" onclick=superm()>Liberar</button>
+        </p>
+        Nv.<b id="supermercadolevel">0</b>
+        <h6>DPS: <h6 id = "superdps">0</h6>
+        <hr>
+      </div>
+
+      <div id="shoppings">
+        <img src="../assets/shopping.jpeg" width="10%">
+        <p>
+          Shopping <progress id="progressshop"></progress><button id="shop" onclick=shop()>Liberar</button>
+        </p>
+        Nv.<b id="shoppinglevel">0</b>
+        <h6>DPS: <h6 id = "shopdps">0</h6>
+        <hr>
+      </div>
     </div>
       
     <script src="main.js"></script>
