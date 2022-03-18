@@ -12,9 +12,8 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-#din{
+#din {
   cursor: pointer;
-  
 }
 #din:hover {
   width: 310px;

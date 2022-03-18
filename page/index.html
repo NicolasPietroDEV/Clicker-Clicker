@@ -8,39 +8,84 @@
     <title>Clicker</title>
   </head>
   <body>
-    <h1 class="titulo1">Clicker</h1>
+
+    <h1 class="titulo1">
+      Clicker
+    </h1> 
+
     <br />
-    <p>Dinheiro:</p>
-    <p id="dinheiro">0</p>
-    <h6>DPC: <b id="dpc">1</b></h6>
-    <image  id="din" src="../assets/dinheironaici.jpg" onclick=dinheiro() class="butao" width="300px">
+
+    <p>
+      Dinheiro:
+    </p>
+
+    <p id="dinheiro">
+      0
+    </p>
+
+    <h6>
+      DPC: 
+      <b id="dpc">
+        1
+      </b>
+    </h6>
+
+    <h6 id="dpsall">
+      DPS: 
+      <b id="dps">
+        0
+      </b>
+    </h6>
+
+    <image 
+    id="din" 
+    src="../assets/dinheironaici.jpg" 
+    onclick=dinheiro() 
+    class="butao" 
+    width="300px">
+
     <hr />
-    <div id="upgrades">
+    
+    <p>
+      Aumentar potência
+      <button onclick="moredinheiro(1.25, 2, upgradeclick, dindinperclick)" id="potencia" class="upgradebutton">
+        10
+      </button>
+    </p>
+    <hr>
+
+    <div id="farmacias">
       <p>
-        Aumentar potência
-        <button onclick="moredinheiro(1.2, 2, upgradeclick)" id="potencia" class="upgradebutton">10</button>
+        Farmácia <progress></progress><button id="farmacia" onclick=farma()>Liberar</button>
       </p>
-      <p>
-        Farmácia <progress></progress><button id="farmacia">7500</button>
-        <h6>DPS: <h6></h6>10</h6>
-      </p>
-      <hr>
-      <p>
-        Açougue <progress></progress><button id="acougue">15000</button>
-        <h6>DPS: <h6></h6>50</h6>
-      </p>
-      <hr>
-      <p>
-        Supermercado <progress></progress><button id="super">30000</button>
-        <h6>DPS: <h6></h6>100</h6>
-      </p>
-      <hr>
-      <p>
-        Shopping <progress></progress><button id="shop">60000</button>
-        <h6>DPS: <h6></h6>300</h6>
-      </p>
+      <h6>DPS: <h6 id = "farmaciadps">0</h6>
       <hr>
     </div>
+
+    <div id="acougues">
+      <p>
+        Açougue <progress></progress><button id="acougue" onclick=acougue()>Liberar</button>
+      </p>
+      <h6>DPS: <h6 id = "acouguedps">0</h6>
+      <hr>
+    </div>
+
+    <div id="supermercados">
+      <p>
+        Supermercado <progress></progress><button id="super" onclick=superm()>Liberar</button>
+      </p>
+      <h6>DPS: <h6 id = "superdps">0</h6>
+      <hr>
+    </div>
+
+    <div id="shoppings">
+      <p>
+        Shopping <progress></progress><button id="shop" onclick=shop()>Liberar</button>
+      </p>
+      <h6>DPS: <h6 id = "shopdps">0</h6>
+      <hr>
+    </div>
+      
     <script src="main.js"></script>
   </body>
 </html>
