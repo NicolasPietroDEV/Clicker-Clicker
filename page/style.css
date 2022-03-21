@@ -1,34 +1,74 @@
 body {
-  background-image: linear-gradient(rgb(8, 114, 8), rgb(128, 197, 128));
-}
-.titulo1 {
-  text-align: center;
-  font-family: fantasy, cooperplate, serif;
+  background-image: linear-gradient(rgba(75, 196, 93), rgba(73, 122, 80));
+  font-family: OCR A Std, monospace;
 }
 
-.butao {
+.titulo1 {
+  text-align: center;
+}
+
+#din {
+  cursor: pointer;
   padding: 30px;
-  border-radius: 25px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-#din {
-  cursor: pointer;
-}
-
 #din:active {
-  width: 23.5%;
+  width: 290px;
 }
 
 #numbers {
-  background-color: rgb(191, 236, 171);
-  width: 100%;
-  le
+  background-color: rgb(73, 175, 88);
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#dpsall {
+  display: none;
+}
+
+.image {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  opacity: 0.5;
+  border-radius: 5px;
 }
 
 #upgrades {
-  background-color: rgba(56, 112, 3, 0.473);
-  border-radius: 50;
+  background-color: rgba(169, 249, 181);
+  border-radius: 10px;
+  border-width: medium;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+}
+
+.progress {
+  display: none;
+}
+
+#upgradestable {
+  width: 50%;
+}
+
+.upgradebutton {
+  padding: 5px;
+  border-radius: 50px;
+  font-family: OCR A Std, monospace;
+}
+
+#real {
+  border-width: medium;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  border-radius: 10px;
+  background-color: rgb(46, 120, 57);
+  min-width: 400px;
+  max-height: 425px;
 }

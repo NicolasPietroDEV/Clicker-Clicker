@@ -3,13 +3,16 @@ var dindin = 0;
 var dindinperclick = 1;
 var upgradeclick = 10;
 
-var farmaciaprice = 0;
+var farmaciaprice = 7500;
 var farmaciagain = 0;
-var acougueprice = 0;
+
+var acougueprice = 20000;
 var acouguegain = 0;
-var superprice = 0;
+
+var superprice = 70000;
 var supergain = 0;
-var shopprice = 0;
+
+var shopprice = 200000;
 var shopgain = 0;
 
 var farmablock = true;
@@ -25,27 +28,27 @@ var shoplvl = 0;
 
 var cps;
 
-document.getElementById("farmacias").style.display = "none";
-document.getElementById("progressfarma").style.display = "none";
+document.getElementById("din").ondragstart = false;
 
-document.getElementById("acougues").style.display = "none";
-document.getElementById("progressacougue").style.display = "none";
+document.getElementById("farmacia").disabled = true;
 
-document.getElementById("supermercados").style.display = "none";
-document.getElementById("progresssuper").style.display = "none";
+document.getElementById("acougue").disabled = true;
 
-document.getElementById("shoppings").style.display = "none";
-document.getElementById("progressshop").style.display = "none";
+document.getElementById("super").disabled = true;
 
-document.getElementById("dpsall").style.display = "none";
+document.getElementById("shop").disabled = true;
 
 function hack(dinheiro) {
   dindin = dindin + dinheiro;
+  verify();
 }
 
 function dinheiro() {
   dindin = dindin + dindinperclick;
-  document.getElementById("dinheiro").textContent = dindin;
+  document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
   verify();
 }
 // Aumentar clique ao comprar upgrade
@@ -64,47 +67,71 @@ function moredinheiro(porcganho, porcpreco) {
       clicklvl = clicklvl + 1;
     }
   }
-  document.getElementById("dinheiro").textContent = dindin;
-  document.getElementById("potencia").textContent = upgradeclick;
-  document.getElementById("dpc").textContent = dindinperclick;
+  document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
+  document.getElementById("potencia").textContent = upgradeclick.toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
+  document.getElementById("dpc").textContent = dindinperclick.toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
   document.getElementById("clicklevel").textContent = clicklvl;
 }
 
 function verify() {
   if (dindin >= 7500 && farmablock == true) {
-    document.getElementById("farmacias").style.display = "block";
+    document.getElementById("farmacia").disabled = false;
+    document.getElementById("farmaciaimage").style.opacity = 1;
     farmablock = false;
     document.getElementById("dpsall").style.display = "block";
+    document.getElementById("real").style.minHeight = "450px";
   }
   if (dindin >= 20000 && acougueblock == true) {
-    document.getElementById("acougues").style.display = "block";
+    document.getElementById("acougue").disabled = false;
+    document.getElementById("acougueimage").style.opacity = 1;
     acougueblock = false;
   }
   if (dindin >= 70000 && superblock == true) {
-    document.getElementById("supermercados").style.display = "block";
+    document.getElementById("super").disabled = false;
+    document.getElementById("supermercadoimage").style.opacity = 1;
     superblock = false;
   }
   if (dindin >= 200000 && shopblock == true) {
-    document.getElementById("shoppings").style.display = "block";
+    document.getElementById("shop").disabled = false;
+    document.getElementById("shoppingimage").style.opacity = 1;
     shopblock = false;
   }
 }
 
 function farma() {
   if (dindin >= farmaciaprice) {
-    if (farmaciaprice == 0) {
+    if (farmaciagain == 0) {
       0;
-      farmaciaprice = 7500;
       farmaciagain = 50;
       document.getElementById("progressfarma").style.display = "block";
     } else {
-      dindin = dindin - farmaciaprice;
-      farmaciaprice = farmaciaprice * 2;
-      farmaciagain = farmaciagain * 1.2;
+      farmaciagain = Math.round(farmaciagain * 1.2);
     }
-    document.getElementById("farmacia").textContent = farmaciaprice;
-    document.getElementById("farmaciadps").textContent = farmaciagain;
-    document.getElementById("dinheiro").textContent = dindin;
+    dindin = dindin - farmaciaprice;
+    farmaciaprice = farmaciaprice * 2;
+    document.getElementById("farmacia").textContent =
+      farmaciaprice.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+    document.getElementById("farmaciadps").textContent =
+      farmaciagain.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+    document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
     farmalvl = farmalvl + 1;
     document.getElementById("farmalevel").textContent = farmalvl;
   } else {
@@ -114,18 +141,28 @@ function farma() {
 
 function acougue() {
   if (dindin >= acougueprice) {
-    if (acougueprice == 0) {
-      acougueprice = 20000;
+    if (acouguegain == 0) {
       acouguegain = 100;
       document.getElementById("progressacougue").style.display = "block";
     } else {
-      dindin = dindin - acougueprice;
-      acougueprice = acougueprice * 2;
-      acouguegain = acouguegain * 1.3;
+      acouguegain = Math.round(acouguegain * 1.3);
     }
-    document.getElementById("acougue").textContent = acougueprice;
-    document.getElementById("acouguedps").textContent = acouguegain;
-    document.getElementById("dinheiro").textContent = dindin;
+    dindin = dindin - acougueprice;
+    acougueprice = acougueprice * 2;
+    document.getElementById("acougue").textContent =
+      acougueprice.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+    document.getElementById("acouguedps").textContent =
+      acouguegain.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+    document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
     acouguelvl = acouguelvl + 1;
     document.getElementById("acouguelevel").textContent = acouguelvl;
   } else {
@@ -135,18 +172,26 @@ function acougue() {
 
 function superm() {
   if (dindin >= superprice) {
-    if (superprice == 0) {
-      superprice = 70000;
+    if (supergain == 0) {
       supergain = 250;
       document.getElementById("progresssuper").style.display = "block";
     } else {
-      dindin = dindin - superprice;
-      superprice = superprice * 2;
-      supergain = supergain * 1.5;
+      supergain = Math.round(supergain * 1.5);
     }
-    document.getElementById("super").textContent = superprice;
-    document.getElementById("superdps").textContent = supergain;
-    document.getElementById("dinheiro").textContent = dindin;
+    dindin = dindin - superprice;
+    superprice = superprice * 2;
+    document.getElementById("super").textContent = superprice.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
+    document.getElementById("superdps").textContent = supergain.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
+    document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
     superlvl = superlvl + 1;
     document.getElementById("supermercadolevel").textContent = superlvl;
   } else {
@@ -156,18 +201,26 @@ function superm() {
 
 function shop() {
   if (dindin >= shopprice) {
-    if (shopprice == 0) {
-      shopprice = 200000;
+    if (shopgain == 0) {
       shopgain = 500;
       document.getElementById("progressshop").style.display = "block";
     } else {
-      dindin = dindin - shopprice;
-      shopprice = shopprice * 2;
-      shopgain = shopgain * 1.6;
+      shopgain = Math.round(shopgain * 1.6);
     }
-    document.getElementById("shop").textContent = shopprice;
-    document.getElementById("shopdps").textContent = shopgain;
-    document.getElementById("dinheiro").textContent = dindin;
+    dindin = dindin - shopprice;
+    shopprice = shopprice * 2;
+    document.getElementById("shop").textContent = shopprice.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
+    document.getElementById("shopdps").textContent = shopgain.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
+    document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+      "pt-BR",
+      { style: "currency", currency: "BRL" }
+    );
     shoplvl = shoplvl + 1;
     document.getElementById("shoppinglevel").textContent = shoplvl;
   } else {
@@ -178,8 +231,14 @@ function shop() {
 function cps() {
   cps = farmaciagain + acouguegain + supergain + shopgain;
   dindin = dindin + cps;
-  document.getElementById("dinheiro").textContent = dindin;
-  document.getElementById("dps").textContent = cps;
+  document.getElementById("dinheiro").textContent = dindin.toLocaleString(
+    "pt-BR",
+    { style: "currency", currency: "BRL" }
+  );
+  document.getElementById("dps").textContent = cps.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 }
 
 setInterval(cps, 1000);

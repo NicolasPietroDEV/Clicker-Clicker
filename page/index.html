@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Simulador de Empresário</title>
+    <link rel="icon" href="../assets/icon.ico"/>
   </head>
+  
   <body>
 
     <h1 class="titulo1">
@@ -16,85 +18,120 @@
     <br />
 
 
-    <div id="numbers">
-      <p>
-        Dinheiro: R$
-        <b id="dinheiro">
-          0
-        </b>
-      </p>
-      <h6>
-        DPC:
-        <b id="dpc">
-          1
-        </b>
-      </h6>
-      <h6 id="dpsall">
-        DPS:
-        <b id="dps">
-          0
-        </b>
-      </h6>
-    </div>
+    <table id = "tabela">
+      <tr>
+        <td id="real">
+          <div id = "clicker">
+            <div id="numbers">
+              <p>
+                Dinheiro:
+                <b id="dinheiro">
+                  R$ 0,00
+                </b>
+              </p>
+              <p>
+                DPC:
+                <b id="dpc">
+                  R$ 1,00
+                </b>
+              </p>
+              <p id="dpsall">
+                DPS:
+                <b id="dps">
+                  0
+                </b>
+              </p>
+            </div>
+            <image
+            id="din"
+            draggable="false"
+            src="../assets/Imagem1.png"
+            onclick=dinheiro()
+            class="butao"
+            width="300px"
+            title="Clique aqui para ganhar dinheiro! :)">
+          </div>
+        </td>
+        
+        <td id="upgradestable">
 
-    <image 
-    id="din" 
-    src="../assets/Imagem2.png" 
-    onclick=dinheiro() 
-    class="butao" 
-    width="300px">
-    
-    <div id="upgrades">
-      <hr />
-      <p>
-        Aumentar potência
-        <button onclick="moredinheiro(1.25, 2, upgradeclick, dindinperclick)" id="potencia" class="upgradebutton">
-          10
-        </button>
-      </p>
-      Nv.<b id="clicklevel">0</b>
+          <div id="upgrades">
+            <p>
+              Aumentar potência
+              <button onclick="moredinheiro(1.25, 2, upgradeclick, dindinperclick)" id="potencia" class="upgradebutton">
+                R$ 10
+              </button>
+            </p>
+            Nv.<b id="clicklevel">1</b>
+            <hr>
 
-      <hr>
-      <div id="farmacias">
-        <img src="../assets/farmacia.jpg" width="10%">
-        <p>
-          Farmácia <progress id="progressfarma"></progress><button id="farmacia" onclick=farma()>Liberar</button>
-        </p>
-        Nv.<b id="farmalevel">0</b>
-        <h6>DPS: <h6 id = "farmaciadps">0</h6>
-        <hr>
-      </div>
+            <div id="farmacias">
+              <table>
+                <tr>
+                  <td>
+                    <p>
+                      Farmácia <progress id="progressfarma" class="progress"></progress><button id="farmacia" onclick=farma() class="upgradebutton">R$ 7.500 (Liberar)</button>
+                    </p>
+                    Nv.<b id="farmalevel">0</b>
+                    <h6>DPS: <h6 id = "farmaciadps">0</h6>
+                  </td>
+                  <td><img src="../assets/farmacia.jpg" class="image" id="farmaciaimage"></td>
+                </tr>
+              </table>
+            </div>
+            <hr>
 
-      <div id="acougues">
-        <img src="../assets/acougue.jpg" width="10%">
-        <p>
-          Açougue <progress id="progressacougue"></progress><button id="acougue" onclick=acougue()>Liberar</button>
-        </p>
-        Nv.<b id="acouguelevel">0</b>
-        <h6>DPS: <h6 id = "acouguedps">0</h6>
-        <hr>
-      </div>
+            <div id="acougues">
+              <table>
+                <tr>
+                  <td>
+                    <p>
+                      Açougue <progress id="progressacougue" class="progress"></progress><button id="acougue" onclick=acougue() class="upgradebutton">R$ 20.000 (Liberar)</button>
+                    </p>
+                    Nv.<b id="acouguelevel">0</b>
+                    <h6>DPS: <h6 id = "acouguedps">0</h6>
+                  </td>
+                  <td><img src="../assets/acougue.jpg" width="10%" class="image" id="acougueimage"></td>
+                </tr>
+                
+              </table>
+              <hr>
+            </div>
 
-      <div id="supermercados">
-        <img src="../assets/supermercado.jpg" width="10%">
-        <p>
-          Supermercado <progress id="progresssuper"></progress><button id="super" onclick=superm()>Liberar</button>
-        </p>
-        Nv.<b id="supermercadolevel">0</b>
-        <h6>DPS: <h6 id = "superdps">0</h6>
-        <hr>
-      </div>
+            <div id="supermercados">
+              <table>
+                <tr>
+                  <td>
+                    <p>
+                      Supermercado <progress id="progresssuper" class="progress"></progress><button id="super" onclick=superm() class="upgradebutton">R$ 70.000 (Liberar)</button>
+                    </p>
+                    Nv.<b id="supermercadolevel">0</b>
+                    <h6>DPS: <h6 id = "superdps">0</h6>
+                  </td>
+                  <td><img src="../assets/supermercado.jpg" width="10%" class="image" id="supermercadoimage"></td>
+                </tr>
+              </table>
+              <hr>
+            </div>
 
-      <div id="shoppings">
-        <img src="../assets/shopping.jpeg" width="10%">
-        <p>
-          Shopping <progress id="progressshop"></progress><button id="shop" onclick=shop()>Liberar</button>
-        </p>
-        Nv.<b id="shoppinglevel">0</b>
-        <h6>DPS: <h6 id = "shopdps">0</h6>
-        <hr>
-      </div>
-    </div>
+            <div id="shoppings">
+              <table>
+                <tr>
+                  <td>
+                    <p>
+                      Shopping <progress id="progressshop" class="progress"></progress><button id="shop" onclick=shop() class="upgradebutton">R$ 200.000 (Liberar)</button>
+                    </p>
+                    Nv.<b id="shoppinglevel">0</b>
+                    <h6>DPS: <h6 id = "shopdps">0</h6>
+                  </td>
+                  <td><img src="../assets/shopping.jpeg" width="10%" class="image" id="shoppingimage"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
       
     <script src="main.js"></script>
   </body>
