@@ -16,7 +16,7 @@ body {
 }
 
 #din:active {
-  width: 290px;
+  transform: scale(1.05);
 }
 
 #numbers {
@@ -70,5 +70,16 @@ body {
   border-radius: 10px;
   background-color: rgb(46, 120, 57);
   min-width: 400px;
-  max-height: 425px;
+  max-height: 475px;
+}
+
+.titulo2 {
+  margin-left: 15px;
+}
+
+#farmacias,
+#acougues,
+#supermercados,
+#shoppings {
+  margin-left: 15px;
 }

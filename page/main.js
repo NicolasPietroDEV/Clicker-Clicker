@@ -38,6 +38,8 @@ document.getElementById("super").disabled = true;
 
 document.getElementById("shop").disabled = true;
 
+document.getElementById("potencia").disabled = true;
+
 function hack(dinheiro) {
   dindin = dindin + dinheiro;
   verify();
@@ -49,7 +51,6 @@ function dinheiro() {
     "pt-BR",
     { style: "currency", currency: "BRL" }
   );
-  verify();
 }
 // Aumentar clique ao comprar upgrade
 function moredinheiro(porcganho, porcpreco) {
@@ -83,27 +84,40 @@ function moredinheiro(porcganho, porcpreco) {
 }
 
 function verify() {
-  if (dindin >= 7500 && farmablock == true) {
+  if (dindin >= upgradeclick) {
+    document.getElementById("potencia").disabled = false;
+  } else {
+    document.getElementById("potencia").disabled = true;
+  }
+
+  if (dindin >= farmaciaprice) {
     document.getElementById("farmacia").disabled = false;
     document.getElementById("farmaciaimage").style.opacity = 1;
-    farmablock = false;
     document.getElementById("dpsall").style.display = "block";
     document.getElementById("real").style.minHeight = "450px";
+  } else {
+    document.getElementById("farmacia").disabled = true;
   }
-  if (dindin >= 20000 && acougueblock == true) {
+
+  if (dindin >= acougueprice) {
     document.getElementById("acougue").disabled = false;
     document.getElementById("acougueimage").style.opacity = 1;
-    acougueblock = false;
+  } else {
+    document.getElementById("acougue").disabled = true;
   }
-  if (dindin >= 70000 && superblock == true) {
+
+  if (dindin >= superprice) {
     document.getElementById("super").disabled = false;
     document.getElementById("supermercadoimage").style.opacity = 1;
-    superblock = false;
+  } else {
+    document.getElementById("super").disabled = true;
   }
-  if (dindin >= 200000 && shopblock == true) {
+
+  if (dindin >= shopprice) {
     document.getElementById("shop").disabled = false;
     document.getElementById("shoppingimage").style.opacity = 1;
-    shopblock = false;
+  } else {
+    document.getElementById("shop").disabled = true;
   }
 }
 
@@ -242,3 +256,4 @@ function cps() {
 }
 
 setInterval(cps, 1000);
+setInterval(verify, 10);
