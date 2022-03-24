@@ -9,18 +9,19 @@
     <link rel="icon" href="../assets/icon.ico"/>
   </head>
   
-  <body>
-
+  <header>
     <h1 class="titulo1">
       Simulador de Empresário
-    </h1> 
+    </h1>
+  </header> 
+
+  <body>
 
     <br />
 
 
-    <table id = "tabela">
-      <tr>
-        <td id="real">
+    <div id = "tabela">
+        <div id="real">
           <div id = "clicker">
             <div id="numbers">
               <p>
@@ -51,9 +52,9 @@
             width="300px"
             title="Clique aqui para ganhar dinheiro! :)">
           </div>
-        </td>
-        
-        <td id="upgradestable">
+        </div>
+
+        <div id="upgradestable">
 
           <div id="upgrades">
             <h4 class="titulo2">
@@ -66,9 +67,7 @@
             <hr>
 
             <div id="farmacias">
-              <table>
-                <tr>
-                  <td>
+                  <div>
                     <h4 class="titulo2">
                       Farmácia 
                     </h4>
@@ -76,68 +75,54 @@
                     <button id="farmacia" onclick=farma() class="upgradebutton">R$ 7.500 (Liberar)</button>
                     Nv.<b id="farmalevel">0</b>
                     <h6>DPS: <h6 id = "farmaciadps">0</h6>
-                  </td>
-                  <td><img src="../assets/farmacia.jpg" class="image" id="farmaciaimage"></td>
-                </tr>
-              </table>
+                  </div>
+                  <div><img src="../assets/farmacia.jpg" class="image" id="farmaciaimage"></div>
             </div>
             <hr>
 
             <div id="acougues">
-              <table>
-                <tr>
-                  <td>
+                  <div>
                     <h4 class="titulo2">
                       Açougue 
                     </h4>
                     <progress id="progressacougue" class="progress"></progress><button id="acougue" onclick=acougue() class="upgradebutton">R$ 20.000 (Liberar)</button>
                     Nv.<b id="acouguelevel">0</b>
                     <h6>DPS: <h6 id = "acouguedps">0</h6>
-                  </td>
-                  <td><img src="../assets/acougue.jpg" width="10%" class="image" id="acougueimage"></td>
-                </tr>
-                
-              </table>
-              <hr>
+                  </div>
+                  <div><img src="../assets/acougue.jpg" width="10%" class="image" id="acougueimage"></div>
             </div>
+            <hr>
 
             <div id="supermercados">
-              <table>
-                <tr>
-                  <td>
+                  <div>
                     <h4 class="titulo2">
                       Supermercado
                     </h4>
                     <progress id="progresssuper" class="progress"></progress><button id="super" onclick=superm() class="upgradebutton">R$ 70.000 (Liberar)</button>
                     Nv.<b id="supermercadolevel">0</b>
                     <h6>DPS: <h6 id = "superdps">0</h6>
-                  </td>
-                  <td><img src="../assets/supermercado.jpg" width="10%" class="image" id="supermercadoimage"></td>
-                </tr>
-              </table>
-              <hr>
+                  </div>
+                  <div><img src="../assets/supermercado.jpg" width="10%" class="image" id="supermercadoimage"></div>
             </div>
+            <hr>
 
             <div id="shoppings">
-              <table>
-                <tr>
-                  <td>
+                  <div>
                     <h4 class="titulo2">
                       Shopping 
                     </h4>
                     <progress id="progressshop" class="progress"></progress><button id="shop" onclick=shop() class="upgradebutton">R$ 200.000 (Liberar)</button>
                     Nv.<b id="shoppinglevel">0</b>
                     <h6>DPS: <h6 id = "shopdps">0</h6>
-                  </td>
-                  <td><img src="../assets/shopping.jpeg" width="10%" class="image" id="shoppingimage"></td>
-                </tr>
-              </table>
+                  </div>
+                  <div><img src="../assets/shopping.jpeg" width="10%" class="image" id="shoppingimage"></div>
             </div>
           </div>
-        </td>
-      </tr>
-    </table>
-      
+    </div>
+  </div>
     <script src="main.js"></script>
   </body>
+  <footer id="enzo">
+    <p>feat. Enzo</p>
+  </footer>
 </html>

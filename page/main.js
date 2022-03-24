@@ -94,7 +94,7 @@ function verify() {
     document.getElementById("farmacia").disabled = false;
     document.getElementById("farmaciaimage").style.opacity = 1;
     document.getElementById("dpsall").style.display = "block";
-    document.getElementById("real").style.minHeight = "450px";
+    document.getElementById("real").style.minHeight = "475px";
   } else {
     document.getElementById("farmacia").disabled = true;
   }
