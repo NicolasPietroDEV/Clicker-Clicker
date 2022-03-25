@@ -23,10 +23,12 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  transition: transform 300ms, background-color 300ms;
+  animation: pulse 500ms;
 }
 
 #din:active {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 #numbers {
