@@ -1,7 +1,24 @@
+// Primeiramente, defino a variável mais importante, a grana
 var dindin = 0;
-
+// Aqui são algumas frescuras: não poder arrastar o dinheiro e não poder abrir o meno de contexto
+document.getElementById("din").ondragstart = false;
+document.oncontextmenu = function () {
+  return false;
+};
+// Crio a classe gerador, que dará inicio a cada uma das instancias que geram dinheiro, como a farmácia e seus atributos
 class gerador {
-  constructor(price, gain, raise, lvl, button, dpslabel, levellabel, inicial) {
+  constructor(
+    price,
+    gain,
+    raise,
+    lvl,
+    button,
+    dpslabel,
+    levellabel,
+    inicial,
+    progress,
+    image
+  ) {
     this.price = price;
     this.gain = gain;
     this.lvl = lvl;
@@ -10,7 +27,10 @@ class gerador {
     this.dps = dpslabel;
     this.levellabel = levellabel;
     this.inicial = inicial;
+    this.progress = progress;
+    this.image = image;
   }
+  // Como será necessário "upgradear", eu crio uma função que avança 1 level
   increase() {
     dindin = dindin - this.price;
     if (this.gain == 0) {
@@ -38,40 +58,59 @@ class gerador {
       { style: "currency", currency: "BRL" }
     );
     document.getElementById(this.levellabel).textContent = this.lvl;
+    document.getElementById(this.progress).style.display = "block";
+    // Este será explicado mais para frente
     verify();
   }
 }
-
-var potenciaz = new gerador(10, 5, 1.25, 1, "potencia", "dpc", "clicklevel", 5);
+// Crio então todas as instancias de gerador
+var potenciaz = new gerador(
+  10,
+  5,
+  1.5,
+  1,
+  "potencia",
+  "dpc",
+  "clicklevel",
+  5,
+  "po",
+  false
+);
 var farmaciaz = new gerador(
   7500,
   0,
-  1.4,
+  1.6,
   0,
   "farmacia",
-  "farmadps",
+  "farmaciadps",
   "farmalevel",
-  50
+  50,
+  "progressfarma",
+  "farmaciaimage"
 );
 var acouguez = new gerador(
   20000,
   0,
-  1.5,
+  1.7,
   0,
   "acougue",
   "acouguedps",
   "acouguelevel",
-  100
+  100,
+  "progressacougue",
+  "acougueimage"
 );
 var supermercadoz = new gerador(
   70000,
   0,
-  1.7,
+  1.8,
   0,
   "super",
   "superdps",
   "supermercadolevel",
-  250
+  250,
+  "progresssuper",
+  "supermercadoimage"
 );
 var shoppingz = new gerador(
   200000,
@@ -81,21 +120,17 @@ var shoppingz = new gerador(
   "shop",
   "shopdps",
   "shoppinglevel",
-  500
+  500,
+  "progressshop",
+  "shoppingimage"
 );
-
+// Variável que definirá meu ganho por segundo
 var cps;
-
-document.getElementById("din").ondragstart = false;
-
-for (x in ["farmacia", "acougue", "super", "shop", "potenia"]) {
-  x.disable = true;
-}
-
+// Hackzinho pra debugar XD
 function hack(dinheiro) {
   dindin = dindin + dinheiro;
 }
-
+// A função que será atribuida ao glorioso botão de ganhar dinheiro
 function dinheiro() {
   dindin = dindin + potenciaz.gain;
   document.getElementById("dinheiro").textContent = dindin.toLocaleString(
@@ -103,44 +138,25 @@ function dinheiro() {
     { style: "currency", currency: "BRL" }
   );
 }
-
+// Esta função será rodada a cada 10 milisegundos e desligará ou ligará os botões da tela conforme eu ter dinheiro
 function verify() {
-  if (dindin >= potenciaz.price) {
-    document.getElementById("potencia").disabled = false;
-  } else {
-    document.getElementById("potencia").disabled = true;
-  }
-
-  if (dindin >= farmaciaz.price) {
-    document.getElementById("farmacia").disabled = false;
-    document.getElementById("farmaciaimage").style.opacity = 1;
-    document.getElementById("dpsall").style.display = "block";
-  } else {
-    document.getElementById("farmacia").disabled = true;
-  }
-
-  if (dindin >= acouguez.price) {
-    document.getElementById("acougue").disabled = false;
-    document.getElementById("acougueimage").style.opacity = 1;
-  } else {
-    document.getElementById("acougue").disabled = true;
-  }
-
-  if (dindin >= supermercadoz.price) {
-    document.getElementById("super").disabled = false;
-    document.getElementById("supermercadoimage").style.opacity = 1;
-  } else {
-    document.getElementById("super").disabled = true;
-  }
-
-  if (dindin >= shoppingz.price) {
-    document.getElementById("shop").disabled = false;
-    document.getElementById("shoppingimage").style.opacity = 1;
-  } else {
-    document.getElementById("shop").disabled = true;
+  for (i of [potenciaz, farmaciaz, acouguez, supermercadoz, shoppingz]) {
+    if (dindin >= i.price) {
+      console.log(i);
+      document.getElementById(i.button).disabled = false;
+      if (i.image != false) {
+        document.getElementById(i.image).style.opacity = 1;
+      }
+      if (document.getElementById("dpsall").style.display == "none") {
+        document.getElementById("dpsall").style.display = "block";
+      }
+    } else {
+      console.log(i.price);
+      document.getElementById(i.button).disabled = true;
+    }
   }
 }
-
+// Calcula e adiciona meu ganho por segundo a cada 1 segundo
 function cps() {
   cps = farmaciaz.gain + acouguez.gain + supermercadoz.gain + shoppingz.gain;
   dindin = dindin + cps;
@@ -153,6 +169,6 @@ function cps() {
     currency: "BRL",
   });
 }
-
+// Seta os tempos das duas funções acima
 setInterval(cps, 1000);
 setInterval(verify, 10);
