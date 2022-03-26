@@ -142,7 +142,6 @@ function dinheiro() {
 function verify() {
   for (i of [potenciaz, farmaciaz, acouguez, supermercadoz, shoppingz]) {
     if (dindin >= i.price) {
-      console.log(i);
       document.getElementById(i.button).disabled = false;
       if (i.image != false) {
         document.getElementById(i.image).style.opacity = 1;
