@@ -5,6 +5,8 @@ document.getElementById("din").ondragstart = false;
 document.oncontextmenu = function () {
   return false;
 };
+// Este já não é frescura, eu escondo o Dinheiro por Segundo até que o jogador tenha algum gerador.
+document.getElementById("dpsall").style.display == "none";
 // Crio a classe gerador, que dará inicio a cada uma das instancias que geram dinheiro, como a farmácia e seus atributos
 class gerador {
   constructor(
@@ -140,24 +142,24 @@ function dinheiro() {
 }
 // Esta função será rodada a cada 10 milisegundos e desligará ou ligará os botões da tela conforme eu ter dinheiro
 function verify() {
+  cps = farmaciaz.gain + acouguez.gain + supermercadoz.gain + shoppingz.gain;
   for (i of [potenciaz, farmaciaz, acouguez, supermercadoz, shoppingz]) {
     if (dindin >= i.price) {
       document.getElementById(i.button).disabled = false;
       if (i.image != false) {
         document.getElementById(i.image).style.opacity = 1;
       }
-      if (document.getElementById("dpsall").style.display == "none") {
+      if (cps > 0) {
         document.getElementById("dpsall").style.display = "block";
+        console.log("ligou");
       }
     } else {
-      console.log(i.price);
       document.getElementById(i.button).disabled = true;
     }
   }
 }
 // Calcula e adiciona meu ganho por segundo a cada 1 segundo
 function cps() {
-  cps = farmaciaz.gain + acouguez.gain + supermercadoz.gain + shoppingz.gain;
   dindin = dindin + cps;
   document.getElementById("dinheiro").textContent = dindin.toLocaleString(
     "pt-BR",
