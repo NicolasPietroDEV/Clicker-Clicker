@@ -10,6 +10,8 @@ document.getElementById("dpsall").style.display == "none";
 // Crio a classe gerador, que dará inicio a cada uma das instancias que geram dinheiro, como a farmácia e seus atributos
 class gerador {
   constructor(
+    name,
+    titlelabel,
     price,
     gain,
     raise,
@@ -19,8 +21,11 @@ class gerador {
     levellabel,
     inicial,
     progress,
-    image
+    image,
+    imagedir
   ) {
+    this.name = name;
+    this.titlelabel = titlelabel;
     this.price = price;
     this.gain = gain;
     this.lvl = lvl;
@@ -31,6 +36,7 @@ class gerador {
     this.inicial = inicial;
     this.progress = progress;
     this.image = image;
+    this.imagedir = imagedir;
   }
   // Como será necessário "upgradear", eu crio uma função que avança 1 level
   increase() {
@@ -67,6 +73,8 @@ class gerador {
 }
 // Crio então todas as instancias de gerador
 var potenciaz = new gerador(
+  "Aumentar potência",
+  "po",
   10,
   5,
   1.5,
@@ -76,9 +84,12 @@ var potenciaz = new gerador(
   "clicklevel",
   5,
   "po",
+  false,
   false
 );
 var farmaciaz = new gerador(
+  "Farmácia",
+  "farmaciatitle",
   7500,
   0,
   1.6,
@@ -88,9 +99,12 @@ var farmaciaz = new gerador(
   "farmalevel",
   50,
   "progressfarma",
-  "farmaciaimage"
+  "farmaciaimage",
+  "assets/farmacia.jpg"
 );
 var acouguez = new gerador(
+  "Açougue",
+  "acouguetitle",
   20000,
   0,
   1.7,
@@ -100,9 +114,12 @@ var acouguez = new gerador(
   "acouguelevel",
   100,
   "progressacougue",
-  "acougueimage"
+  "acougueimage",
+  "assets/acougue.jpg"
 );
 var supermercadoz = new gerador(
+  "Supermercado",
+  "supermercadotitle",
   70000,
   0,
   1.8,
@@ -112,9 +129,12 @@ var supermercadoz = new gerador(
   "supermercadolevel",
   250,
   "progresssuper",
-  "supermercadoimage"
+  "supermercadoimage",
+  "assets/supermercado.jpg"
 );
 var shoppingz = new gerador(
+  "Shopping",
+  "shoppingtitle",
   200000,
   0,
   1.9,
@@ -124,7 +144,8 @@ var shoppingz = new gerador(
   "shoppinglevel",
   500,
   "progressshop",
-  "shoppingimage"
+  "shoppingimage",
+  "assets/shopping.jpeg"
 );
 // Variável que definirá meu ganho por segundo
 var cps;
@@ -146,7 +167,9 @@ function verify() {
   for (i of [potenciaz, farmaciaz, acouguez, supermercadoz, shoppingz]) {
     if (dindin >= i.price) {
       document.getElementById(i.button).disabled = false;
+      document.getElementById(i.titlelabel).textContent = i.name;
       if (i.image != false) {
+        document.getElementById(i.image).src = i.imagedir;
         document.getElementById(i.image).style.opacity = 1;
       }
       if (cps > 0) {
