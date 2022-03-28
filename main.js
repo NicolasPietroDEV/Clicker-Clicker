@@ -5,6 +5,15 @@ document.getElementById("din").ondragstart = false;
 document.oncontextmenu = function () {
   return false;
 };
+// Só um segredo do jogo: ao clicar no título voce pode alterá-lo
+function namechanger() {
+  document.querySelector(".titulo1").textContent =
+    document.querySelector("#titlechanger").value;
+  document.getElementById("secretchanger").style.display = "none";
+}
+function namechangerchanger() {
+  document.getElementById("secretchanger").style.display = "block";
+}
 // Este já não é frescura, eu escondo o Dinheiro por Segundo até que o jogador tenha algum gerador.
 document.getElementById("dpsall").style.display == "none";
 // Crio a classe gerador, que dará inicio a cada uma das instancias que geram dinheiro, como a farmácia e seus atributos
@@ -77,7 +86,7 @@ var potenciaz = new gerador(
   "po",
   10,
   5,
-  1.5,
+  1.3,
   1,
   "potencia",
   "dpc",
@@ -92,7 +101,7 @@ var farmaciaz = new gerador(
   "farmaciatitle",
   7500,
   0,
-  1.6,
+  1.3,
   0,
   "farmacia",
   "farmaciadps",
@@ -107,7 +116,7 @@ var acouguez = new gerador(
   "acouguetitle",
   20000,
   0,
-  1.7,
+  1.35,
   0,
   "acougue",
   "acouguedps",
@@ -122,7 +131,7 @@ var supermercadoz = new gerador(
   "supermercadotitle",
   70000,
   0,
-  1.8,
+  1.4,
   0,
   "super",
   "superdps",
@@ -137,7 +146,7 @@ var shoppingz = new gerador(
   "shoppingtitle",
   200000,
   0,
-  1.9,
+  1.6,
   0,
   "shop",
   "shopdps",
@@ -172,14 +181,20 @@ function verify() {
         document.getElementById(i.image).src = i.imagedir;
         document.getElementById(i.image).style.opacity = 1;
       }
-      if (cps > 0) {
-        document.getElementById("dpsall").style.display = "block";
-        console.log("ligou");
-      }
     } else {
       document.getElementById(i.button).disabled = true;
     }
   }
+  if (cps > 0) {
+    document.getElementById("dpsall").style.display = "block";
+  }
+  document.getElementById("sitename").textContent = dindin.toLocaleString(
+    "pt-BR",
+    {
+      style: "currency",
+      currency: "BRL",
+    }
+  );
 }
 // Calcula e adiciona meu ganho por segundo a cada 1 segundo
 function cps() {
